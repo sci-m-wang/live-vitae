@@ -26,4 +26,13 @@
 - [x] Configure `.github/workflows/deploy.yml` for repository-aware Pages paths and add pull-request CI.
 - [x] Run `npm ci`, `npm test`, `npm run build`; validate generated local links at both root/project paths and scan for original personal identifiers/vaults.
 - [x] Check browser layout at 390/807/1600px, language switching, filters (5/3/4/1), deep-link dialogs, and demo editor. Preserve structural labels and per-page layouts per user clarification.
-- [ ] Commit and push to the requested repository; enable Pages/template settings if authenticated permissions permit; verify the deployed example.
+- [x] Commit and push to the requested repository; enable Pages/template settings; verify the deployed example.
+
+## Verification outcome
+
+- 12 Node tests passed; Astro check: zero errors, warnings, or hints.
+- Root and project-path builds each validated 156 internal URLs.
+- Browser checks confirmed separate archive layouts, visible navigation at 390/807/1600px, language switching, deep-linked publication dialogs and filter counts.
+- GitHub CI and Pages deployment succeeded for `286f7b3`.
+- Homepage, all seven archives, editor route, portrait and robots.txt returned HTTP 200 on the deployed site.
+- Repository marked as a template; Pages uses the GitHub Actions source.
