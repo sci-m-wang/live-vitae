@@ -1,6 +1,6 @@
 /** Public configuration only. Never put passwords or GitHub tokens here. */
 export const siteConfig = {
-  // Keep true for the fictional example. Set false for your own homepage.
+  // true: public local-editing sandbox. false: password-unlocked GitHub owner editor.
   demo: true,
   defaultLanguage: "zh",
   site: "https://sci-m-wang.github.io",

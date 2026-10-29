@@ -22,7 +22,7 @@ export const siteConfig = {
 
 保留文件中的 `resolveDeployment` 和 `withBase` 函数。只修改 `siteConfig` 对象。
 
-- `demo: true` 关闭浏览器编辑器初始化及引用/Stars 更新，不要求页面展示提示条。
+- `demo: true` 开启公开的本地编辑沙盒，关闭 GitHub 认证及引用/Stars 更新。体验说明仅显示在编辑页。
 - `site` 只填域名；`base` 单独填路径，以 `/` 开头、结尾。
 - 普通仓库 `my-homepage`：`base: "/my-homepage/"`。
 - 用户主页仓库 `your-name.github.io`：`base: "/"`。
@@ -136,6 +136,16 @@ npm run test:links
 
 ## 5. 可选浏览器编辑器
 
+### 公开体验模式
+
+保留 `demo: true` 即可让访客直接进入 `/<base>/update/`，使用与站长模式相同的内容表单。新增、编辑和删除会保存到当前浏览器的 localStorage，刷新后可继续体验。首页及档案页仍显示仓库构建出的内容，不渲染访客的本地修改。
+
+工具栏提供“恢复初始数据”和“导出 JSON”。导出菜单分别下载 `profile.json`、`publications.json`、`sections.json`，保存后可复制到自己的项目。恢复会清除本地修改，请先导出需要保留的内容。不同仓库和部署路径使用独立的本地存档。
+
+浏览器限制本地存储时，编辑器使用当前页面内存并显示提示。此时刷新或离开会丢失修改，应先导出。请使用示例资料，不要在共享设备上输入个人信息。沙盒不请求 GitHub API，页面的 CSP 也限制其连接到当前站点。
+
+### 站长发布模式
+
 仅在自己的仓库上启用，要求 HTTPS（或本地 localhost）与 Web Crypto。将 `demo` 设为 `false`，访问 `/<base>/update/`：
 
 1. 创建限定当前仓库的 fine-grained GitHub Token，有效期尽量短，只授予 **Contents: Read and write**。
@@ -144,6 +154,8 @@ npm run test:links
 4. 每次保存创建 Git 提交，GitHub Pages 随之构建。关闭/刷新/锁定页面会清理内存中的 Token。
 
 GitHub Token 的写权限才是最终授权机制。公开的 AES-GCM 密文仍可能遭受离线口令猜测；本机制不替代 GitHub 账号安全，不提供服务端会话或多人权限管理。仓库名/owner 改变后旧 vault 不可复用，请撤销旧 Token 并重新初始化。组织仓库使用本地或 GitHub 网页维护。
+
+解锁后的 Token 可以被浏览器使用者读取。不要公开解锁密码，也不要将解锁后的站长编辑器当作访客体验入口。公开体验使用前述沙盒模式。
 
 `site.config.mjs`、`ui.json`、原始图片及 CV 需要通过代码或 GitHub 网页修改；浏览器编辑器主要管理内容记录和基础资料。
 

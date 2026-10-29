@@ -8,19 +8,20 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
 
 <BaseLayout
   title={`Edit homepage · ${profile.name}`}
-  description={`Private, password-unlocked content editor for ${profile.name}.`}
+  description={site.demo ? "Try the Live Vitae content editor in a local browser sandbox." : `Private, password-unlocked content editor for ${profile.name}.`}
   noindex={true}
   secureEditor={true}
 >
   <main class="update-page portal-page" id="main">
     <nav class="update-page__nav" aria-label="Homepage editor navigation">
       <a href={sitePath("/")}>← {profile.name} / {profile.nameZh}</a>
-      <span>OWNER EDITOR · ENCRYPTED VAULT</span>
+      <span>{site.demo ? "BROWSER SANDBOX · 编辑体验" : "OWNER EDITOR · ENCRYPTED VAULT"}</span>
     </nav>
 
     <div class="portal-alert" id="portal-alert" role="status" aria-live="polite" hidden></div>
 
-    {site.demo && <section class="portal-auth"><div><p class="section-heading__index">CONTENT MANAGEMENT / 内容管理</p><h1>内容管理</h1><p>当前站点未启用在线编辑，不收集密码或 GitHub Token。</p><p>部署自己的主页后，可在站点配置中启用仓库所有者编辑器。</p></div><div><p><a class="button button--dark" href="https://github.com/sci-m-wang/live-vitae/blob/main/docs/customization.md">配置指南 ↗</a></p><p><a class="button button--line" href={sitePath("/")}>返回主页</a></p></div></section>}
+    {site.demo && <aside class="portal-demo-notice" aria-label="体验模式说明"><h1>在线编辑体验</h1><p>直接体验新增、编辑、删除和保存。修改仅保存在当前浏览器，公开主页保持原样，也不会影响其他访客。可以导出 JSON，或恢复初始数据重新开始。</p><p>此模式无需密码或 GitHub Token。请使用示例资料，勿在共享设备上填写私人信息。</p></aside>}
+    <noscript><p>编辑器需要启用 JavaScript。</p></noscript>
 
     <section class="portal-auth portal-auth--unlock" id="auth-panel" aria-labelledby="auth-title" hidden={site.demo}>
       <div class="portal-auth__intro">
@@ -107,17 +108,18 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
       </form>
     </section>
 
-    <section class="portal-editor" id="editor-panel" aria-labelledby="editor-title" hidden>
+    <section class="portal-editor" id="editor-panel" aria-labelledby="editor-title" hidden={!site.demo}>
       <header class="portal-account-bar">
         <div class="portal-account" id="portal-account">
           <span class="portal-account__avatar" aria-hidden="true">LV</span>
-          <span><strong id="account-name">{repository.owner}</strong><small>Encrypted vault unlocked · Session only</small></span>
+          <span><strong id="account-name">{site.demo ? "本地体验" : repository.owner}</strong><small>{site.demo ? "Local content sandbox" : "Encrypted vault unlocked · Session only"}</small></span>
         </div>
         <div class="portal-account-bar__actions">
           <span class="portal-dirty-status" id="dirty-status" data-dirty="false">所有修改已保存</span>
-          <a href={`https://github.com/${repository.owner}/${repository.name}/commits/${repository.branch}`} target="_blank" rel="noreferrer">提交记录 ↗</a>
-          <button id="change-password-button" type="button">修改密码</button>
-          <button id="logout-button" type="button">锁定编辑器</button>
+          {site.demo && <><details class="portal-demo-export"><summary>导出 JSON</summary><div>{["publications", "profile", "sections"].map((key) => <button type="button" data-demo-export={key}>{key}.json ↓</button>)}</div></details><button id="demo-reset-button" type="button">恢复初始数据</button></>}
+          {!site.demo && <a href={`https://github.com/${repository.owner}/${repository.name}/commits/${repository.branch}`} target="_blank" rel="noreferrer">提交记录 ↗</a>}
+          <button id="change-password-button" type="button" hidden={site.demo}>修改密码</button>
+          <button id="logout-button" type="button" hidden={site.demo}>锁定编辑器</button>
         </div>
       </header>
 
@@ -133,10 +135,10 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
 
       <div class="portal-editor__heading">
         <div>
-          <p class="section-heading__index">02 · Edit & publish / 编辑并发布</p>
+          <p class="section-heading__index">{site.demo ? "EDIT & SAVE / 编辑与保存" : "02 · Edit & publish / 编辑并发布"}</p>
           <h2 id="editor-title">Content archive</h2>
         </div>
-        <p>Every save creates one traceable Git commit and automatically rebuilds the homepage.<br />每次保存都会生成一条可追踪的 Git 提交，并自动更新主页。</p>
+        {site.demo ? <p id="demo-storage-note">体验完整的内容管理表单。保存后刷新本页仍可继续编辑，清除浏览器站点数据会移除本地存档。</p> : <p>Every save creates one traceable Git commit and automatically rebuilds the homepage.<br />每次保存都会生成一条可追踪的 Git 提交，并自动更新主页。</p>}
       </div>
 
       <nav class="portal-tabs" aria-label="Content type">
@@ -181,21 +183,21 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
             <div class="portal-fields" id="form-fields"></div>
 
             <label class="portal-field portal-field--wide" for="commit-message">
-              <span>提交说明 <small>Commit message</small></span>
+              <span>{site.demo ? "保存说明" : "提交说明"} <small>{site.demo ? "Save note" : "Commit message"}</small></span>
               <input id="commit-message" type="text" maxlength="120" required />
             </label>
 
             <aside class="portal-save-note">
               <strong>Save path / 保存路径</strong>
               <span id="save-path">src/data/publications.json → main</span>
-              <p>保存前会再次检查远端版本；如有更新冲突，本页不会覆盖新数据。</p>
+              <p>{site.demo ? "保存到当前浏览器。若其他标签页先保存了新版本，会提示你重新检查内容。" : "保存前会再次检查远端版本；如有更新冲突，本页不会覆盖新数据。"}</p>
             </aside>
 
             <footer class="portal-content-form__footer">
-              <p id="form-feedback" aria-live="polite">检查必填项后即可发布。</p>
+              <p id="form-feedback" aria-live="polite">{site.demo ? "检查必填项后即可保存。" : "检查必填项后即可发布。"}</p>
               <div class="portal-content-form__actions">
                 <button class="portal-action portal-action--danger" id="delete-entry-button" type="button" hidden>删除条目</button>
-                <button class="portal-action portal-action--primary" id="save-button" type="submit">检查并发布</button>
+                <button class="portal-action portal-action--primary" id="save-button" type="submit">{site.demo ? "检查并保存" : "检查并发布"}</button>
               </div>
             </footer>
           </form>
@@ -205,13 +207,13 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
 
     <dialog class="portal-confirm-dialog" id="save-dialog" aria-labelledby="save-dialog-title">
       <form method="dialog">
-        <p class="section-heading__index">Final check / 发布确认</p>
-        <h2 id="save-dialog-title">Publish these changes?</h2>
+        <p class="section-heading__index">{site.demo ? "Final check / 保存确认" : "Final check / 发布确认"}</p>
+        <h2 id="save-dialog-title">{site.demo ? "保存这些修改？" : "Publish these changes?"}</h2>
         <p id="save-dialog-summary">请确认本次修改。</p>
         <dl id="save-dialog-changes"></dl>
         <div class="portal-confirm-dialog__actions">
           <button class="portal-action portal-action--line" value="cancel">返回检查</button>
-          <button class="portal-action portal-action--primary" value="confirm">确认保存并发布</button>
+          <button class="portal-action portal-action--primary" value="confirm">{site.demo ? "确认保存到本地" : "确认保存并发布"}</button>
         </div>
       </form>
     </dialog>
@@ -220,7 +222,7 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
       <form method="dialog">
         <p class="section-heading__index">Delete entry / 删除条目</p>
         <h2 id="delete-dialog-title">Delete this entry?</h2>
-        <p>确认后会立即生成一条 Git 提交并重新部署主页。需要恢复时仍可从 Git 历史找回。</p>
+        <p>{site.demo ? "将从本地体验数据中删除这个条目。公开主页不受影响，可使用“恢复初始数据”重置全部内容。" : "确认后会立即生成一条 Git 提交并重新部署主页。需要恢复时仍可从 Git 历史找回。"}</p>
         <dl>
           <dt>待删除条目</dt>
           <dd id="delete-dialog-name"></dd>
@@ -230,7 +232,7 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
         <p class="portal-delete-dialog__warning" id="delete-dialog-warning">此操作无法在当前页面撤销。</p>
         <div class="portal-confirm-dialog__actions">
           <button class="portal-action portal-action--line" value="cancel">保留条目</button>
-          <button class="portal-action portal-action--danger-solid" value="confirm">确认删除并发布</button>
+          <button class="portal-action portal-action--danger-solid" value="confirm">{site.demo ? "确认删除本地条目" : "确认删除并发布"}</button>
         </div>
       </form>
     </dialog>
@@ -262,10 +264,10 @@ const tokenUrl = `https://github.com/settings/personal-access-tokens/new?${new U
 
     <section class="portal-footnote">
       <p class="section-heading__index">Practical notes / 使用说明</p>
-      <div>
+      {site.demo ? <div><p>本地存档只包含体验内容。导出的文件名与 <code>src/data/</code> 中的内容文件一致，可用于你自己的模板。</p><p>真实的站长编辑模式仍需 GitHub 授权，启用方法见<a href="https://github.com/sci-m-wang/live-vitae/blob/main/docs/customization.md">配置指南</a>。</p></div> : <div>
         <p>This lightweight vault is intended for personal-site maintenance. Git history remains the recovery path for accidental edits. If the password is forgotten, revoke the old token, delete <code>public/admin-vault.json</code> on GitHub, and refresh this page to initialize again.</p>
         <p>这个轻量保险箱主要用于个人主页维护；误修改可随时通过 Git 历史恢复。如果忘记密码，撤销旧 Token、在 GitHub 删除 <code>public/admin-vault.json</code>，刷新本页即可重新初始化。</p>
-      </div>
+      </div>}
     </section>
   </main>
 

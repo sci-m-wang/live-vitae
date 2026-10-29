@@ -1,4 +1,26 @@
 import { repository, site, sitePath } from "../lib/site";
+import { createDemoStore } from "../lib/demo-store.mjs";
+import demoProfile from "../data/profile.json";
+import demoPublications from "../data/publications.json";
+import demoSections from "../data/sections.json";
+
+let demoStorage = null;
+if (site.demo) {
+  try {
+    demoStorage = window.localStorage;
+    const probe = `live-vitae:probe:${crypto.randomUUID()}`;
+    demoStorage.setItem(probe, "1");
+    demoStorage.removeItem(probe);
+  } catch {
+    demoStorage = null;
+  }
+}
+const demoStore = site.demo ? createDemoStore({
+  storage: demoStorage,
+  key: `live-vitae:demo:v1:${repository.owner}/${repository.name}:${import.meta.env.BASE_URL}`,
+  seed: { profile: demoProfile, publications: demoPublications, sections: demoSections },
+}) : null;
+const saveActionLabel = site.demo ? "检查并保存" : "检查并发布";
 
 const OWNER = repository.owner;
 const REPOSITORY = repository.name;
@@ -262,7 +284,7 @@ const sectionConfigs = {
       { key: "description.en", label: "英文说明", type: "textarea", wide: true },
       { key: "description.zh", label: "中文说明", type: "textarea", wide: true },
       { key: "links.paper", label: "论文链接", type: "url", wide: true },
-      { key: "links.code", label: "项目 / 代码链接", hint: "GitHub 仓库的 Star 数会每周自动刷新", type: "url", wide: true },
+      { key: "links.code", label: "项目 / 代码链接", hint: site.demo ? "体验模式可编辑链接，不刷新 GitHub Stars" : "配置 GitHub 同步后可每周刷新 Star 数", type: "url", wide: true },
     ],
     create() {
       return { id: "", title: "", role: { en: "", zh: "" }, period: "", pinned: false, description: { en: "", zh: "" }, links: { paper: "", code: "" }, stars: { count: 0, source: "GitHub", updatedAt: "", repository: "" } };
@@ -619,6 +641,7 @@ async function decryptToken(vault, password) {
 }
 
 async function githubApi(path, options = {}) {
+  if (site.demo) throw new Error("体验模式不访问 GitHub API。");
   if (!state.token) throw new Error("请先连接 GitHub。/ Connect GitHub first.");
   const response = await fetch(`${API_ROOT}${path}`, {
     ...options,
@@ -667,6 +690,7 @@ function encodeBase64Utf8(value) {
 }
 
 async function loadVault() {
+  if (site.demo) throw new Error("体验模式不使用凭证保险箱。");
   const response = await fetch(`${API_ROOT}/repos/${OWNER}/${REPOSITORY}/contents/${VAULT_PATH}?ref=${BRANCH}`, {
     headers: {
       Accept: "application/vnd.github+json",
@@ -717,6 +741,10 @@ async function validateRepositoryAccess() {
 }
 
 async function loadDocument(documentKey) {
+  if (demoStore) {
+    const snapshot = demoStore.read();
+    return { data: snapshot.documents[documentKey], sha: String(snapshot.revisions[documentKey]) };
+  }
   const filePath = FILES[documentKey];
   const payload = await githubApi(`/repos/${OWNER}/${REPOSITORY}/contents/${filePath}?ref=${BRANCH}`);
   if (Array.isArray(payload) || !payload?.content || !payload?.sha) throw new Error(`无法读取 ${filePath}。`);
@@ -742,9 +770,27 @@ async function saveDocument(documentKey, nextDocument, message) {
   if (latest.sha !== state.shas[documentKey]) {
     state.documents[documentKey] = latest.data;
     state.shas[documentKey] = latest.sha;
-    const conflictError = new Error("远端内容已更新，为避免覆盖，本页已载入最新版本。请重新检查后再保存。");
+    const conflictError = new Error(site.demo
+      ? "其他标签页已保存新版本，本页已载入最新内容。请重新检查后再保存。"
+      : "远端内容已更新，为避免覆盖，本页已载入最新版本。请重新检查后再保存。");
     conflictError.code = "CONTENT_CONFLICT";
     throw conflictError;
+  }
+
+  if (demoStore) {
+    try {
+      const saved = demoStore.save(documentKey, nextDocument, Number(state.shas[documentKey]));
+      state.documents[documentKey] = saved.documents[documentKey];
+      state.shas[documentKey] = String(saved.revisions[documentKey]);
+      return { commitUrl: "", commitSha: "" };
+    } catch (error) {
+      if (error.code === "CONTENT_CONFLICT") {
+        const latestLocal = await loadDocument(documentKey);
+        state.documents[documentKey] = latestLocal.data;
+        state.shas[documentKey] = latestLocal.sha;
+      }
+      throw error;
+    }
   }
 
   const filePath = FILES[documentKey];
@@ -883,8 +929,8 @@ function openItem(index) {
   formMode.textContent = "Editing existing entry / 修改现有条目";
   formTitle.textContent = currentConfig().display(item).title;
   commitMessage.value = `content: update ${state.section} ${item.id || "profile"}`;
-  savePath.textContent = `${FILES[currentConfig().document]} → ${BRANCH}`;
-  formFeedback.textContent = "检查必填项后即可发布。";
+  savePath.textContent = `${FILES[currentConfig().document]} → ${site.demo ? "当前浏览器" : BRANCH}`;
+  formFeedback.textContent = site.demo ? "检查必填项后即可保存到当前浏览器。" : "检查必填项后即可发布。";
   renderFields(item);
   deleteEntryButton.hidden = !isDeletable(item);
   setDirty(false);
@@ -909,8 +955,8 @@ function createItem() {
   formMode.textContent = "Creating new entry / 新增条目";
   formTitle.textContent = config.label;
   commitMessage.value = `content: add ${state.section} entry`;
-  savePath.textContent = `${FILES[config.document]} → ${BRANCH}`;
-  formFeedback.textContent = "新增条目会追加到当前列表，并触发主页重新部署。";
+  savePath.textContent = `${FILES[config.document]} → ${site.demo ? "当前浏览器" : BRANCH}`;
+  formFeedback.textContent = site.demo ? "新增条目会保存在本地体验列表，不修改公开主页。" : "新增条目会追加到当前列表，并触发主页重新部署。";
   renderFields(item);
   deleteEntryButton.hidden = true;
   setDirty(false);
@@ -1109,7 +1155,7 @@ function confirmDelete(item) {
   deleteDialogName.textContent = display.title;
   deleteDialogImpact.textContent = deleteImpact(item);
   deleteDialogWarning.textContent = state.dirty
-    ? "表单中尚未保存的修改不会保留；删除的是当前线上版本。"
+    ? (site.demo ? "将删除本地已保存的条目，表单中未保存的修改会被放弃。" : "表单中尚未保存的修改不会保留；删除的是当前线上版本。")
     : "此操作无法在当前页面撤销。";
   deleteDialog.returnValue = "cancel";
   deleteDialog.showModal();
@@ -1149,7 +1195,7 @@ function confirmPublish(item, message) {
   const changes = collectChanges(item);
   saveDialogSummary.textContent = changes.length
     ? `${state.creating ? "新增" : "修改"} ${currentConfig().label} · ${message}`
-    : `条目内容没有变化，将只提交说明：${message}`;
+    : (site.demo ? "条目内容没有变化。" : `条目内容没有变化，将只提交说明：${message}`);
   saveDialogChanges.replaceChildren();
   for (const change of changes.slice(0, 8)) {
     const term = document.createElement("dt");
@@ -1191,6 +1237,7 @@ function beginPublishProgress(commitUrl) {
 }
 
 async function trackDeployment(commitSha, commitUrl) {
+  if (site.demo) return;
   beginPublishProgress(commitUrl);
   for (let attempt = 0; attempt < 18; attempt += 1) {
     await new Promise((resolve) => window.setTimeout(resolve, attempt === 0 ? 4000 : 7000));
@@ -1279,6 +1326,45 @@ async function initializeAuth() {
     vaultStatus.textContent = "暂时不可用";
     showAlert(error.message || "无法检查保险箱。", "error");
   }
+}
+
+async function initializeDemo() {
+  const snapshot = demoStore.read();
+  if (!demoStore.persistent) byId("demo-storage-note").textContent = "浏览器限制了本地存储。修改只在当前页面保留，刷新或离开前请导出 JSON。";
+  await enterEditor({ login: "本地体验" }, demoStore.persistent
+    ? "可以直接体验编辑。保存仅影响当前浏览器，公开主页保持原样。"
+    : "浏览器限制了本地存储，修改仅在当前页面保留。离开前请导出 JSON。");
+  if (snapshot.recovered) showAlert("本地存档无法读取，已载入初始示例。可使用“恢复初始数据”重新开始。", "info");
+}
+
+async function resetDemo() {
+  if (!demoStore || !confirmDiscard()) return;
+  if (!window.confirm("恢复全部初始数据？这会清除当前浏览器中已保存的体验修改，建议先导出 JSON。")) return;
+  try {
+    demoStore.reset();
+    await loadAllDocuments();
+    state.search = "";
+    searchInput.value = "";
+    closeForm(true);
+    switchSection("publications");
+    showAlert("已恢复初始数据。公开主页和其他访客的数据没有变化。", "success");
+  } catch (error) {
+    showAlert(`恢复失败：${error.message}`, "error");
+  }
+}
+
+function exportDemo(documentKey) {
+  if (!demoStore || !FILES[documentKey]) return;
+  if (state.dirty) return showAlert("请先保存当前表单，再导出 JSON。", "info");
+  const data = demoStore.read().documents[documentKey];
+  const url = URL.createObjectURL(new Blob([`${JSON.stringify(data, null, 2)}\n`], { type: "application/json" }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${documentKey}.json`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 async function unlock(event) {
@@ -1390,17 +1476,19 @@ async function submitContent(event) {
     const item = readFormItem();
     validateItem(item);
     const message = commitMessage.value.trim();
-    if (!message) throw new Error("请填写提交说明。");
+    if (!message) throw new Error(site.demo ? "请填写保存说明。" : "请填写提交说明。");
     if (!(await confirmPublish(item, message))) return;
     hideAlert();
     saveButton.disabled = true;
     saveButton.textContent = "正在保存…";
-    formFeedback.textContent = "正在检查远端版本并创建提交…";
+    formFeedback.textContent = site.demo ? "正在保存本地修改…" : "正在检查远端版本并创建提交…";
     const nextDocument = createNextDocument(item);
     const commit = await saveDocument(currentConfig().document, nextDocument, message);
     setDirty(false);
-    showAlert("保存成功。GitHub 正在重新部署主页。", "success", commit.commitUrl);
-    formFeedback.textContent = "已创建提交并触发主页更新。";
+    showAlert(site.demo
+      ? (demoStore.persistent ? "已保存到当前浏览器。可以继续编辑、导出 JSON 或恢复初始数据。" : "已保存到当前页面。浏览器未开放本地存储，离开前请导出 JSON。")
+      : "保存成功。GitHub 正在重新部署主页。", "success", commit.commitUrl);
+    formFeedback.textContent = site.demo ? "本地修改已保存。" : "已创建提交并触发主页更新。";
     void trackDeployment(commit.commitSha, commit.commitUrl);
     renderList();
     if (state.creating) {
@@ -1425,7 +1513,7 @@ async function submitContent(event) {
     }
   } finally {
     saveButton.disabled = false;
-    saveButton.textContent = "检查并发布";
+    saveButton.textContent = saveActionLabel;
   }
 }
 
@@ -1438,14 +1526,14 @@ async function deleteCurrentItem() {
   deleteEntryButton.disabled = true;
   saveButton.disabled = true;
   deleteEntryButton.textContent = "正在删除…";
-  formFeedback.textContent = "正在检查远端版本并删除条目…";
+  formFeedback.textContent = site.demo ? "正在删除本地条目…" : "正在检查远端版本并删除条目…";
 
   try {
     const nextDocument = createDocumentWithoutCurrentItem();
     const commit = await saveDocument(currentConfig().document, nextDocument, message);
     setDirty(false);
     closeForm(true);
-    showAlert("条目已删除。GitHub 正在重新部署主页。", "success", commit.commitUrl);
+    showAlert(site.demo ? "已从本地体验数据中删除条目。可通过“恢复初始数据”重置。" : "条目已删除。GitHub 正在重新部署主页。", "success", commit.commitUrl);
     void trackDeployment(commit.commitSha, commit.commitUrl);
   } catch (error) {
     showAlert(error.message || "删除失败，请稍后重试。", "error");
@@ -1516,10 +1604,17 @@ window.addEventListener("pagehide", () => {
 });
 
 window.addEventListener("pageshow", (event) => {
-  if (event.persisted && !editorPanel.hidden) {
+  if (!site.demo && event.persisted && !editorPanel.hidden) {
     setDirty(false);
     logout();
   }
 });
 
-if (!site.demo) void initializeAuth();
+byId("demo-reset-button")?.addEventListener("click", resetDemo);
+document.querySelectorAll("[data-demo-export]").forEach((button) => {
+  button.addEventListener("click", () => exportDemo(button.dataset.demoExport));
+});
+
+if (site.demo) {
+  void initializeDemo().catch((error) => showAlert(`无法载入本地体验：${error.message}`, "error"));
+} else void initializeAuth();

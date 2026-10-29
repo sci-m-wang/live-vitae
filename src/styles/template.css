@@ -33,3 +33,11 @@ html[data-language="en"] .language-toggle__zh { display: none; }
 }
 .archive-header h1 { font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.2; }
 .archive-header > p { max-width: 64ch; margin-top: 1rem; color: var(--ink-soft); }
+
+.portal-demo-notice { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--line); background: var(--paper-deep); }
+.portal-demo-notice h1 { margin-bottom: 0.75rem; font-size: 1.8rem; }
+.portal-demo-notice p { margin-top: 0.5rem; max-width: 80ch; font-size: 0.85rem; }
+.portal-demo-export { position: relative; }
+.portal-demo-export summary { cursor: pointer; font-size: 0.75rem; padding: 0.5rem; }
+.portal-demo-export > div { position: absolute; right: 0; z-index: 20; display: grid; padding: 0.5rem; border: 1px solid var(--line); background: var(--paper); min-width: 180px; }
+.portal-demo-export button { text-align: left; white-space: nowrap; }
