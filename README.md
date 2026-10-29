@@ -62,6 +62,8 @@ npm run preview     # 预览生产构建
 
 稳定 `id` 不应随意更名。正式标题只存一份；叙述内容使用 `{ "en": "…", "zh": "…" }`。详见[配置指南](docs/customization.md)。
 
+示例文案的维护规则见[内容写作约定](docs/content-style.md)。派蒙梗放在内容里，导航和页面结构保持通用。
+
 ## 浏览器编辑器与安全
 
 默认 `demo: true`，公开示例不初始化 GitHub 认证，也不收集密码或 Token。自己的主页配置完毕后才将其设为 `false`。

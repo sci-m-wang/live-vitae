@@ -2,37 +2,37 @@
   {
     "id": "food-allowance-2026",
     "title": "论向导伙食费的合理性研究：基于「派蒙还在长身体」的无限期预算模型",
-    "authors": "Paimon, Traveler (corresponding wallet), Buer (unaware of coauthorship)",
+    "authors": "Paimon, Traveler, Buer",
     "venue": "提瓦特吃饭学报（影响因子取决于午饭好不好吃）",
     "venueShort": "Journal of Guide Allowance",
     "year": 2026, "category": "first", "status": "published", "pinned": true,
     "badges": ["同行共餐评审", "最佳饭文奖"], "arxivId": "", "publishedAt": "2026-09-01", "doi": "",
     "links": { "paper": "", "pdf": "", "code": "" },
-    "abstract": { "en": "We ask whether Paimon's food allowance is reasonable. A single-participant, 365-day longitudinal study finds that every proposed increase is reasonable, necessary, and already spent. The baseline 'eat less' was excluded on ethical grounds. The corresponding author supplies both correspondence and money. Limitations include the absence of an independent auditor and the presence of Paimon.", "zh": "本文研究向导伙食费是否合理这一长期被错误讨论的问题。采用单受试者、全年无休的纵向研究，发现每一次涨伙食费均具有合理性、必要性和已经花完的既成事实性。基线方法「少吃一点」因伦理风险被排除；对照组「不带派蒙」因研究者拒绝配合而终止。实验表明，只要将「还在长身体」设为不可证伪公理，预算即可稳定收敛到旅行者全部余额。通讯作者负责通讯，钱包作者负责钱包。" },
+    "abstract": { "en": "This study follows a guide's food expenses over a year of travel across Teyvat. Paimon records each meal, while the Traveler keeps the receipts. Spending rises near new restaurants and again when Paimon remembers a restaurant they passed earlier. Every budget review ends with a request for another meal allowance. Paimon attributes the increase to growing research needs and submits the dinner receipt with the revised manuscript.", "zh": "本研究记录派蒙在提瓦特旅行期间一整年的伙食支出，由派蒙登记菜名，旅行者保管收据。每到一座新城，预算便随当地菜单重新核定。离开后想起还有一家店没吃过，核定工作还得重来。历次经费会议都以追加伙食费结束，派蒙据此认为现行预算偏低。修订稿提交时附有当晚的账单，供审稿人结合实际情况考虑。" },
     "citations": { "count": 999, "source": "派蒙口头引用，未经第三方核验", "updatedAt": "2026-10-01" }
   },
   {
     "id": "not-emergency-food-2026",
     "title": "我不是应急食品：基于强烈抗议的非食用性形式化证明",
-    "authors": "Paimon, Paimon*, Paimon** (*equal hunger; **also Paimon)",
+    "authors": "Paimon",
     "venue": "非食用性研究通讯（拒绝被食品类数据库收录）",
     "venueShort": "Not Food Letters",
     "year": 2026, "category": "first", "status": "published", "pinned": true,
     "badges": ["不是吃的", "开放抗议"], "arxivId": "", "publishedAt": "2026-06-01", "doi": "",
     "links": { "paper": "", "pdf": "", "code": "" },
-    "abstract": { "en": "The claim 'Paimon is emergency food' remains widespread despite repeated author rebuttals. We introduce Proof by Indignation: if an object loudly objects to being eaten, researchers should buy it lunch instead. Three independent Paimons validate the theorem; all three are the same Paimon. Reviewer #2 requests a taste test and has been permanently removed from the review process.", "zh": "尽管作者已多次澄清，「派蒙是应急食品」仍被不负责任地广泛传播。本文提出生气证明法：若某对象会强烈抗议被食用，则研究者应当请其吃饭，而非研究其口感。三位独立派蒙完成交叉验证，后经核查均为派蒙本人。二号审稿人要求补充试吃实验，现已被永久移出评审流程。本文不提供烹饪代码，也不接受食谱复现。" },
+    "abstract": { "en": "This paper examines how the nickname 'emergency food' entered accounts of Paimon's travels. The author compares the Traveler's remarks with her own statements and assigns greater evidential weight to the latter. She argues that a companion who orders dinner belongs on the customer side of the menu. During review, a request to discuss preparation methods receives a six-page response. The revised manuscript includes that response as its central proof.", "zh": "本文考察「应急食品」这一称呼在旅行记录中的使用，并将旅行者的说法与派蒙本人的陈述逐一对照。作者认为，会自己点菜的旅伴应当归入顾客，而非菜单。证据权重按当事人的发言时长分配，派蒙在这一项占据明显优势。二号审稿人建议补充烹饪方式讨论，收到六页逐条回复。修订稿将这份回复收入正文，作为生气证明法的主要论证。" },
     "citations": { "count": 108, "source": "每次被叫应急食品就引用一次", "updatedAt": "2026-10-01" }
   },
   {
     "id": "silent-traveler-2025",
     "title": "沉默主角的高吞吐语言代理：一种零战斗贡献的全栈嘴替架构",
-    "authors": "Traveler*, Paimon* (*Traveler did the work; Paimon did the talking)",
+    "authors": "Traveler*, Paimon*",
     "venue": "七国人机交互大会（茶歇时长超过正会）",
     "venueShort": "Teyvat CHI 2025",
     "year": 2025, "category": "cofirst", "status": "published", "pinned": false,
     "badges": ["神之嘴架构", "共同一作，分别贡献"], "arxivId": "", "publishedAt": "2025-11-01", "doi": "",
     "links": { "paper": "", "pdf": "", "code": "" },
-    "abstract": { "en": "Our architecture separates action from explanation: the Traveler performs every action while Paimon explains each one at length. It achieves a 100% dialogue-coverage rate and a 0% combat-participation rate. Ablating Paimon improves latency but significantly reduces nickname diversity. Human evaluation was conducted by Paimon, who rated Paimon as essential.", "zh": "本文将动作执行与语言说明彻底解耦：旅行者负责执行所有动作，派蒙负责详细说明刚刚发生了什么。系统实现 100% 对话覆盖率与 0% 战斗参与率。消融派蒙可显著降低剧情延迟，但外号多样性出现灾难性下降。人工评估由派蒙主持，结果显示派蒙不可或缺。该结论未通过旅行者的沉默反对票。" },
+    "abstract": { "en": "We study a traveling pair whose conversation and fieldwork are handled by different members. The Traveler completes the quest while Paimon explains the situation to everyone nearby. Removing Paimon's dialogue shortens the recorded exchanges but also removes most nicknames and several requests for payment. Paimon reviews the resulting transcript and judges it difficult to follow. The authors agree to retain both contributions and share first authorship.", "zh": "本研究观察旅行者与派蒙在委托中的分工，重点记录任务执行与对外交流如何衔接。旅行者处理现场问题，派蒙向周围的人说明事情经过。删去派蒙的发言后，对话记录明显缩短，外号和询问报酬的段落也随之消失。派蒙读完精简版，认为很多地方需要自己出来解释。两位作者最终保留原始记录，并同意共同署名。" },
     "citations": { "count": 66, "source": "嘴替学领域自建数据库", "updatedAt": "2026-10-01" }
   },
   {
@@ -44,19 +44,19 @@
     "year": 2025, "category": "coauthor", "status": "published", "pinned": false,
     "badges": ["叮！发现新经费"], "arxivId": "", "publishedAt": "2025-05-01", "doi": "",
     "links": { "paper": "", "pdf": "", "code": "" },
-    "abstract": { "en": "Treasure chest sounds significantly improve the participant's reported motivation, especially when accompanied by actual treasure. Audio-only rewards produce an immediate accusation of stinginess. The luxurious chest declined to sign the authorship agreement until opened.", "zh": "宝箱开启声能够显著提高受试者自报动机，尤其是在同时真的掉落宝物的情况下。仅播放音效而不发放奖励会立即触发「小气鬼」评价。豪华宝箱因尚未开启而未能签署作者贡献声明，研究组认为这不影响其共同作者资格。" },
+    "abstract": { "en": "This study compares Paimon's response to treasure chest sounds during routine exploration. She approaches a visible chest promptly and remains attentive while its contents are collected. A recording of the same sound sends her looking behind the nearest rock. Repeated playback eventually produces a request to see the chest itself. The findings suggest that sustained motivation depends on what the sound promises to deliver.", "zh": "研究组比较派蒙在日常探索中听见宝箱开启声后的反应。看得见宝箱时，她会立即靠近，并持续关注物品拾取过程。播放同一音效的录音，她也会先去附近的石头后面找一圈。重复播放数次后，派蒙要求研究组把真正的宝箱拿出来。结果提示，激励效果取决于声音之后能拿到什么。" },
     "citations": { "count": 88, "source": "宝箱边上的派蒙", "updatedAt": "2026-10-01" }
   },
   {
     "id": "beyond-map-2026",
     "title": "前面的区域，以后再来探索吧：基于强制掉头的开放世界边界对齐",
-    "authors": "Paimon, Traveler (involuntarily redirected)",
+    "authors": "Paimon, Traveler",
     "venue": "工作论文 · 因作者不允许进入实验区域而无法完成",
     "venueShort": "Working paper / 还没探索",
     "year": 2026, "category": "working", "status": "preprint", "pinned": false,
     "badges": ["以后再来审稿吧", "实验区域未开放"], "arxivId": "", "publishedAt": "2026-10-01", "doi": "",
     "links": { "paper": "", "pdf": "", "code": "" },
-    "abstract": { "en": "We propose a perfect boundary-alignment mechanism: when the agent approaches the evaluation region, Paimon tells it to come back later. As a result, no out-of-bound failures are observed because no evaluations are permitted. Reviewers seeking to reproduce our results should explore the area later.", "zh": "本文提出一种完美的边界对齐机制：当智能体接近评测区域时，派蒙要求它以后再来。因此未观察到任何越界失败，因为所有评测均被禁止。尝试复现本工作的审稿人请以后再来探索。附录里的区域，也以后再来阅读吧。" },
+    "abstract": { "en": "This working paper records what happens when the Traveler approaches the edge of the available map. Paimon delivers a familiar instruction, and the Traveler turns back toward the explored region. The study treats this exchange as a navigation intervention and follows the route taken afterward. Field notes from a cliffside trial have prompted a closer review of turning direction. Paimon has scheduled the next round of exploration for later.", "zh": "这篇工作论文记录旅行者接近地图边界时发生的导航干预。派蒙说出熟悉的提醒后，旅行者转向已经探索过的区域。研究组沿返程路线追踪行动结果，将转向位置和附近地形一并记入日志。一份来自悬崖边的记录促使作者重新检查掉头方向。后续实验已由派蒙安排到以后再做。" },
     "citations": { "count": 0, "source": "引用区域尚未开放", "updatedAt": "2026-10-01" }
   }
 ]
