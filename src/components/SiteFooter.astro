@@ -1,0 +1,33 @@
+---
+import LocalText from "./LocalText.astro";
+import { profile } from "../data/content";
+import { sitePath } from "../lib/site";
+---
+
+<footer class="site-footer" id="contact">
+  <div class="site-footer__lead">
+    <div>
+      <p class="eyebrow"><LocalText en="Contact" zh="联系" /></p>
+      <LocalText en="Research conversations are welcome." zh="欢迎交流研究想法。" as="p" class="site-footer__invitation" />
+    </div>
+    <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+  </div>
+  <div class="site-footer__links">
+    {profile.links.scholar && <a href={profile.links.scholar} target="_blank" rel="noreferrer">Scholar ↗</a>}
+    {profile.links.github && <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub ↗</a>}
+    {profile.links.orcid && <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID ↗</a>}
+    <a
+      href={sitePath(profile.links.cv.en)}
+      data-localized-href
+      data-href-en={sitePath(profile.links.cv.en)}
+      data-href-zh={sitePath(profile.links.cv.zh)}
+      target="_blank"
+    ><LocalText en="Curriculum Vitae ↓" zh="学术简历 ↓" /></a>
+    <a href={sitePath("/update/")}><LocalText en="Update information" zh="更新资料" /> ↗</a>
+  </div>
+  <div class="site-footer__base">
+    <p>© {new Date().getFullYear()} {profile.name} / {profile.nameZh}</p>
+    <p>Built with <a href="https://github.com/sci-m-wang/live-vitae">Live Vitae</a>.</p>
+    <a href="#top"><LocalText en="Back to top ↑" zh="回到顶部 ↑" /></a>
+  </div>
+</footer>

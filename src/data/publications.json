@@ -1,0 +1,62 @@
+[
+  {
+    "id": "food-allowance-2026",
+    "title": "论向导伙食费的合理性研究：基于「派蒙还在长身体」的无限期预算模型",
+    "authors": "Paimon, Traveler (corresponding wallet), Buer (unaware of coauthorship)",
+    "venue": "提瓦特吃饭学报（影响因子取决于午饭好不好吃）",
+    "venueShort": "Journal of Guide Allowance",
+    "year": 2026, "category": "first", "status": "published", "pinned": true,
+    "badges": ["同行共餐评审", "最佳饭文奖"], "arxivId": "", "publishedAt": "2026-09-01", "doi": "",
+    "links": { "paper": "", "pdf": "", "code": "" },
+    "abstract": { "en": "We ask whether Paimon's food allowance is reasonable. A single-participant, 365-day longitudinal study finds that every proposed increase is reasonable, necessary, and already spent. The baseline 'eat less' was excluded on ethical grounds. The corresponding author supplies both correspondence and money. Limitations include the absence of an independent auditor and the presence of Paimon.", "zh": "本文研究向导伙食费是否合理这一长期被错误讨论的问题。采用单受试者、全年无休的纵向研究，发现每一次涨伙食费均具有合理性、必要性和已经花完的既成事实性。基线方法「少吃一点」因伦理风险被排除；对照组「不带派蒙」因研究者拒绝配合而终止。实验表明，只要将「还在长身体」设为不可证伪公理，预算即可稳定收敛到旅行者全部余额。通讯作者负责通讯，钱包作者负责钱包。" },
+    "citations": { "count": 999, "source": "派蒙口头引用，未经第三方核验", "updatedAt": "2026-10-01" }
+  },
+  {
+    "id": "not-emergency-food-2026",
+    "title": "我不是应急食品：基于强烈抗议的非食用性形式化证明",
+    "authors": "Paimon, Paimon*, Paimon** (*equal hunger; **also Paimon)",
+    "venue": "非食用性研究通讯（拒绝被食品类数据库收录）",
+    "venueShort": "Not Food Letters",
+    "year": 2026, "category": "first", "status": "published", "pinned": true,
+    "badges": ["不是吃的", "开放抗议"], "arxivId": "", "publishedAt": "2026-06-01", "doi": "",
+    "links": { "paper": "", "pdf": "", "code": "" },
+    "abstract": { "en": "The claim 'Paimon is emergency food' remains widespread despite repeated author rebuttals. We introduce Proof by Indignation: if an object loudly objects to being eaten, researchers should buy it lunch instead. Three independent Paimons validate the theorem; all three are the same Paimon. Reviewer #2 requests a taste test and has been permanently removed from the review process.", "zh": "尽管作者已多次澄清，「派蒙是应急食品」仍被不负责任地广泛传播。本文提出生气证明法：若某对象会强烈抗议被食用，则研究者应当请其吃饭，而非研究其口感。三位独立派蒙完成交叉验证，后经核查均为派蒙本人。二号审稿人要求补充试吃实验，现已被永久移出评审流程。本文不提供烹饪代码，也不接受食谱复现。" },
+    "citations": { "count": 108, "source": "每次被叫应急食品就引用一次", "updatedAt": "2026-10-01" }
+  },
+  {
+    "id": "silent-traveler-2025",
+    "title": "沉默主角的高吞吐语言代理：一种零战斗贡献的全栈嘴替架构",
+    "authors": "Traveler*, Paimon* (*Traveler did the work; Paimon did the talking)",
+    "venue": "七国人机交互大会（茶歇时长超过正会）",
+    "venueShort": "Teyvat CHI 2025",
+    "year": 2025, "category": "cofirst", "status": "published", "pinned": false,
+    "badges": ["神之嘴架构", "共同一作，分别贡献"], "arxivId": "", "publishedAt": "2025-11-01", "doi": "",
+    "links": { "paper": "", "pdf": "", "code": "" },
+    "abstract": { "en": "Our architecture separates action from explanation: the Traveler performs every action while Paimon explains each one at length. It achieves a 100% dialogue-coverage rate and a 0% combat-participation rate. Ablating Paimon improves latency but significantly reduces nickname diversity. Human evaluation was conducted by Paimon, who rated Paimon as essential.", "zh": "本文将动作执行与语言说明彻底解耦：旅行者负责执行所有动作，派蒙负责详细说明刚刚发生了什么。系统实现 100% 对话覆盖率与 0% 战斗参与率。消融派蒙可显著降低剧情延迟，但外号多样性出现灾难性下降。人工评估由派蒙主持，结果显示派蒙不可或缺。该结论未通过旅行者的沉默反对票。" },
+    "citations": { "count": 66, "source": "嘴替学领域自建数据库", "updatedAt": "2026-10-01" }
+  },
+  {
+    "id": "chest-sound-2025",
+    "title": "叮！宝箱开启声能否替代学术激励：来自一个小型飞行个体的证据",
+    "authors": "Buer, Paimon, One Unopened Luxurious Chest",
+    "venue": "应用宝箱声学评论（豪华宝箱优先送审）",
+    "venueShort": "Applied Chest Acoustics",
+    "year": 2025, "category": "coauthor", "status": "published", "pinned": false,
+    "badges": ["叮！发现新经费"], "arxivId": "", "publishedAt": "2025-05-01", "doi": "",
+    "links": { "paper": "", "pdf": "", "code": "" },
+    "abstract": { "en": "Treasure chest sounds significantly improve the participant's reported motivation, especially when accompanied by actual treasure. Audio-only rewards produce an immediate accusation of stinginess. The luxurious chest declined to sign the authorship agreement until opened.", "zh": "宝箱开启声能够显著提高受试者自报动机，尤其是在同时真的掉落宝物的情况下。仅播放音效而不发放奖励会立即触发「小气鬼」评价。豪华宝箱因尚未开启而未能签署作者贡献声明，研究组认为这不影响其共同作者资格。" },
+    "citations": { "count": 88, "source": "宝箱边上的派蒙", "updatedAt": "2026-10-01" }
+  },
+  {
+    "id": "beyond-map-2026",
+    "title": "前面的区域，以后再来探索吧：基于强制掉头的开放世界边界对齐",
+    "authors": "Paimon, Traveler (involuntarily redirected)",
+    "venue": "工作论文 · 因作者不允许进入实验区域而无法完成",
+    "venueShort": "Working paper / 还没探索",
+    "year": 2026, "category": "working", "status": "preprint", "pinned": false,
+    "badges": ["以后再来审稿吧", "实验区域未开放"], "arxivId": "", "publishedAt": "2026-10-01", "doi": "",
+    "links": { "paper": "", "pdf": "", "code": "" },
+    "abstract": { "en": "We propose a perfect boundary-alignment mechanism: when the agent approaches the evaluation region, Paimon tells it to come back later. As a result, no out-of-bound failures are observed because no evaluations are permitted. Reviewers seeking to reproduce our results should explore the area later.", "zh": "本文提出一种完美的边界对齐机制：当智能体接近评测区域时，派蒙要求它以后再来。因此未观察到任何越界失败，因为所有评测均被禁止。尝试复现本工作的审稿人请以后再来探索。附录里的区域，也以后再来阅读吧。" },
+    "citations": { "count": 0, "source": "引用区域尚未开放", "updatedAt": "2026-10-01" }
+  }
+]

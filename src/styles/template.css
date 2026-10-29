@@ -1,0 +1,35 @@
+html[data-language="en"] .language-toggle__zh { display: none; }
+/* Author-level styles must never override HTML's hidden state. */
+[hidden] { display: none !important; }
+
+/* Keep the archive reachable on tablets and phones instead of hiding it. */
+@media (max-width: 1400px) {
+  .site-nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.6rem 1rem;
+    background: rgba(242, 239, 232, 0.97) !important;
+  }
+  .site-nav__actions { grid-column: 2; grid-row: 1; }
+  .site-nav__links {
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 1.4rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0.4rem 0 0.5rem;
+    scrollbar-width: thin;
+  }
+  .site-nav__links a { flex-shrink: 0; white-space: nowrap; }
+  .site-brand__name { display: flex; }
+  .subpage-shell { padding-top: 144px; }
+}
+
+.archive-header {
+  padding: 2rem var(--page-gutter);
+  border-bottom: 1px solid var(--line);
+}
+.archive-header h1 { font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.2; }
+.archive-header > p { max-width: 64ch; margin-top: 1rem; color: var(--ink-soft); }

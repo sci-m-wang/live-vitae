@@ -1,0 +1,66 @@
+{
+  "name": "Paimon",
+  "nameZh": "派蒙",
+  "pronunciation": "The best travel companion",
+  "role": { "en": "Honorary Ph.D. Candidate · Sumeru Akademiya", "zh": "须弥教令院 · 荣誉在读博士（尚未通过识字资格考）" },
+  "headline": { "en": "I turn research funding into lunch.", "zh": "把科研经费，转化为下一顿饭。" },
+  "kicker": { "en": "Gastronomic Intelligence & Traveler Alignment", "zh": "美食智能 · 旅行者对齐 · 应急食品去标签化" },
+  "bio": { "en": "I am Teyvat's leading independent scholar of lunch, treasure, and saying what the Traveler was already thinking. At the Sumeru Akademiya, I investigate whether a guide's food allowance can grow indefinitely while the Traveler's wallet remains finite. My research method is participant observation; my participants pay for dinner.", "zh": "我是提瓦特首席独立学者，长期从事吃饭、寻宝及替旅行者把心里话说出来的交叉研究。现挂靠须弥教令院，主攻「有限钱包条件下向导伙食费的无限增长」。采用参与式观察法：我负责参与吃饭，旅行者负责观察账单。导师说我的研究很有分量，主要体现在体重上。" },
+  "email": "paimon@example.org",
+  "location": { "en": "Within two meters of the Traveler", "zh": "旅行者身边两米内（饭点可瞬移）" },
+  "coordinates": { "latitude": "距下一顿 00:03", "longitude": "距毕业 ∞" },
+  "portraitYear": "饭后摄 / Post-lunch",
+  "links": { "scholar": "", "github": "", "orcid": "", "cv": { "en": "/cv/example.html?lang=en", "zh": "/cv/example.html?lang=zh" } },
+  "metrics": [
+    { "id": "citations", "value": "999+", "label": { "en": "times cited by myself", "zh": "自我引用次数" }, "note": { "en": "h-index: hungry · i10: ate ten", "zh": "h 指数：hungry · i10 指数：一顿十个" } },
+    { "id": "stars", "value": "0", "label": { "en": "Mora left after fieldwork", "zh": "田野调查后剩余摩拉" }, "note": { "en": "All funding was successfully digested", "zh": "经费执行率 100%，且已消化" } },
+    { "id": "projects", "value": "∞", "label": { "en": "emergency-food allegations", "zh": "被叫应急食品次数" }, "note": { "en": "All allegations categorically denied", "zh": "均已严正交涉，暂无撤稿" } }
+  ],
+  "affiliations": [
+    { "name": "Sumeru Akademiya", "nameZh": "须弥教令院", "role": { "en": "Honorary doctoral candidate, Department of Lunch", "zh": "伙食经费学科荣誉博士研究生" }, "period": "从入学到开饭", "url": "" },
+    { "name": "Traveler's Backpack Research Institute", "nameZh": "旅行者背包高级研究院", "role": { "en": "Founding director & chief snack officer", "zh": "创院院长兼首席试吃员" }, "period": "一直在，没离开过", "url": "" }
+  ],
+  "advisors": [],
+  "researchAreas": [
+    { "index": "01", "title": { "en": "Food allowance economics", "zh": "向导伙食费与摩拉流动性" }, "description": { "en": "Can a fixed wallet support an unbounded appetite? Preliminary results: ask the Traveler.", "zh": "有限的钱包能否支撑无界的食欲？初步结果：问旅行者。" }, "keywords": ["经费报销", "甜甜花酿鸡", "预算软约束"] },
+    { "index": "02", "title": { "en": "Emergency-food ontology", "zh": "应急食品本体论与身份去污名化" }, "description": { "en": "Being small and floating does not imply edibility. A proof by indignation.", "zh": "个子小且会飞不蕴含可食用。使用生气法给出严格证明。" }, "keywords": ["不是吃的", "也不是食材", "你再说一遍"] },
+    { "index": "03", "title": { "en": "Traveler alignment & dialogue outsourcing", "zh": "旅行者对齐与代说话多模态系统" }, "description": { "en": "One silent protagonist, one high-throughput conversational interface.", "zh": "一个不怎么说话的主角，配一个吞吐量极高的语言接口。" }, "keywords": ["嘴替", "自动接话", "前面的区域"] }
+  ],
+  "experience": [
+    { "id": "akademiya-phd", "type": "education", "period": { "en": "After lunch — Present", "zh": "某次午饭后 — 至今" }, "title": { "en": "Honorary Ph.D. in Advanced Food Allowance Studies", "zh": "高级伙食费学荣誉博士（在读，未缴学费）" }, "organization": "Sumeru Akademiya", "organizationZh": "须弥教令院", "description": { "en": "Advisor: the former Grand Sage, involuntarily. Dissertation committee: Buer, the Traveler, and whoever is buying dinner. Failed the language exam after insisting 'Paimon' is a first-person pronoun.", "zh": "导师：某位不愿透露姓名的前大贤者（被动指导）。答辩委员：布耶尔、旅行者和请客的人。因坚持「派蒙」属于第一人称代词，未通过学术写作考试。" }, "url": "" },
+    { "id": "beach-school", "type": "education", "period": { "en": "Before the main quest", "zh": "主线开始以前" }, "title": { "en": "B.Sc. in Being Fished Out of the Sea", "zh": "海洋被打捞学学士" }, "organization": "Unnamed Beach Open University", "organizationZh": "无名海滩开放大学", "description": { "en": "Admitted via fishing. Graduated with a perfect flotation record. Thesis: Why Was I in the Water If I Can Fly? The original data remain missing.", "zh": "通过垂钓专项招生入学，以满绩浮力毕业。毕业论文《既然会飞，为什么当时在水里》因原始数据缺失，至今无法复现。" }, "url": "" },
+    { "id": "traveler-guide", "type": "work", "period": { "en": "Day one — Until the food runs out", "zh": "第一天 — 吃完为止" }, "title": { "en": "Chief Guide, Spokesperson & Expense Generator", "zh": "首席向导、全权嘴替与经费发生器" }, "organization": "Traveler & Paimon Unlimited Liability Company", "organizationZh": "旅行者与派蒙无限吃饭责任公司", "description": { "en": "Own 100% of the dialogue and 0% of the combat. Responsible for naming enemies, announcing obvious facts, and negotiating payment immediately after emotional scenes.", "zh": "承担 100% 的对话和 0% 的战斗。负责给敌人取外号、郑重宣布显而易见的事实，以及在感人剧情结束后及时询问报酬。" }, "url": "" },
+    { "id": "wangshu-visit", "type": "exchange", "period": { "en": "One dinner, extended indefinitely", "zh": "原定一顿饭，现已无限延期" }, "title": { "en": "Visiting Scholar in Almond Tofu", "zh": "杏仁豆腐访问学者" }, "organization": "Wangshu Inn Institute for Applied Cooking", "organizationZh": "望舒客栈应用烹饪研究所", "description": { "en": "Completed double-blind taste tests: eyes closed in both rounds. The control group was also eaten. Funding extension requested before the first bowl was empty.", "zh": "完成双盲试吃：两轮都闭着眼吃。对照组也被吃掉了。第一碗还没见底，就已提交延期申请。" }, "url": "" },
+    { "id": "fortress-visit", "type": "exchange", "period": { "en": "During the coupon crisis", "zh": "特许券流动性危机期间" }, "title": { "en": "Intern in Alternative Currency Consumption", "zh": "替代货币消费学实习生" }, "organization": "Fortress of Meropide", "organizationZh": "梅洛彼得堡", "description": { "en": "Investigated whether credit coupons count as Mora. Concluded that any currency not convertible to lunch is methodologically invalid.", "zh": "研究特许券是否属于摩拉。结论：任何无法兑换午饭的货币，在方法论上均不成立。" }, "url": "" }
+  ],
+  "funding": [
+    { "id": "sweet-madame-grant", "displayTitle": "向导伙食费可持续增长重大专项（纵向，经费已吃）", "title": { "en": "Sustainable Guide Food Allowance Initiative", "zh": "向导伙食费可持续增长重大专项" }, "role": { "en": "Principal investigator & sole beneficiary", "zh": "项目负责人兼唯一受益人" }, "funder": "旅行者口袋自然科学基金", "amount": "300,000 摩拉 / 餐后余额 0", "period": "早餐 — 夜宵" },
+    { "id": "chest-grant", "displayTitle": "宝箱开启声对向导幸福感的瞬时因果效应", "title": { "en": "Causal Effects of Treasure Chest Sounds", "zh": "宝箱开启声对向导幸福感的瞬时因果效应" }, "role": { "en": "Co-PI; Traveler performs all interventions", "zh": "共同负责人；所有干预由旅行者实施" }, "funder": "提瓦特野外散落资产再分配计划", "amount": "视宝箱品质而定", "period": "看见宝箱 — 打开宝箱" },
+    { "id": "buer-grant", "displayTitle": "虚空关闭后的小型飞行物学术生产力追踪研究", "title": { "en": "Post-Akasha Academic Productivity of Small Flying Objects", "zh": "虚空关闭后的小型飞行物学术生产力追踪研究" }, "role": { "en": "Participant, not a flying object", "zh": "受试者，但不是飞行物" }, "funder": "布耶尔个人友情资助（不代表教令院立场）", "amount": "知识若干，不能买饭", "period": "想起来就做" }
+  ],
+  "projects": [
+    { "id": "paimon-gpt", "title": "Paimon-GPT：基于甜甜花酿鸡强化学习的旅行者嘴替", "pinned": true, "role": { "en": "Chief output officer", "zh": "首席输出官" }, "period": "每次剧情对话期间", "description": { "en": "Input: the Traveler's silence. Output: six paragraphs, two nicknames, and a dinner request. Reward model accepts only Sweet Madame. Context window resets when lunch arrives.", "zh": "输入：旅行者的沉默。输出：六段话、两个难听的外号和一份晚饭申请。奖励模型仅接受甜甜花酿鸡；午饭到达时自动清空上下文。推理成本由旅行者按月结算。" }, "links": { "paper": "", "code": "" }, "stars": { "count": 0, "source": "虚空终端离线缓存", "updatedAt": "2026-10-01", "repository": "" } },
+    { "id": "area-denial", "title": "前面的区域，以后再来探索吧：开放世界中的闭集控制", "pinned": true, "role": { "en": "Boundary condition", "zh": "边界条件本人" }, "period": "靠近地图边缘时", "description": { "en": "A navigation safety system that solves out-of-distribution exploration by turning the distribution around. Known limitation: cliffs. Ethics review: 'Paimon thought that was the way back.'", "zh": "通过让旅行者原地掉头，解决分布外探索问题。已知局限：悬崖。伦理审查意见：「派蒙以为那边能走回来。」系统的主要贡献是在真正的开放世界里重新发明了围墙。" }, "links": { "paper": "", "code": "" } },
+    { "id": "mora-zero", "title": "MoraZero：无需任何积蓄的高频消费框架", "pinned": false, "role": { "en": "Zero-shot spender", "zh": "零样本花钱专家" }, "period": "长期稳定运行", "description": { "en": "Achieves state-of-the-art spending without owning a wallet. Generalizes across all seven nations. Ablation: remove the Traveler; system immediately asks where the Traveler went.", "zh": "在不持有钱包的前提下达到最先进的消费水平，泛化覆盖七国。消融实验：移除旅行者，系统立即进入「旅行者去哪了」异常状态。模型不开源，因为源是旅行者的钱。" }, "links": { "paper": "", "code": "" } }
+  ],
+  "awards": [
+    { "id": "not-food", "year": "2026", "pinned": true, "title": { "en": "Lifetime Non-Edibility Achievement Award", "zh": "终身非食用性成就奖" }, "event": "派蒙反应急食品化委员会（派蒙本人颁发）", "url": "" },
+    { "id": "best-companion", "year": "2026", "pinned": true, "title": { "en": "Best Travel Companion, Unanimous Vote", "zh": "提瓦特最佳旅伴 · 全票通过" }, "event": "有效选票 1 张，投票人派蒙，监票人也是派蒙", "url": "" },
+    { "id": "budget-award", "year": "2025", "pinned": false, "title": { "en": "Outstanding Research Budget Execution", "zh": "科研经费光盘行动先进个人" }, "event": "无结余、无剩菜、无可审计实物", "url": "" },
+    { "id": "nickname-award", "year": "2025", "pinned": false, "title": { "en": "Distinguished Chair in Applied Nicknaming", "zh": "应用起外号学杰出讲席" }, "event": "代表成果：卖唱的、放牛的；同行普遍不愿评审", "url": "" },
+    { "id": "floating-award", "year": "2024", "pinned": false, "title": { "en": "Most Persistent Unexplained Floating Phenomenon", "zh": "最持久未解释悬浮现象奖" }, "event": "获奖理由：会飞，但赶路仍然喊累", "url": "" }
+  ],
+  "activities": [
+    { "id": "sage-keynote", "type": "talk", "title": "从大贤者到大冤种：一段非自愿师生关系的知识考古", "organization": "教令院跨学科午餐研讨会", "period": "开饭前 15 分钟", "description": { "en": "Invited keynote. The former Grand Sage did not attend, endorse, or know about the invitation. Catering was the principal investigator.", "zh": "特邀主旨报告。前大贤者未出席、未授权，也不知道自己是导师。报告摘要：这事说来话长，我们边吃边说。" }, "url": "" },
+    { "id": "buer-seminar", "type": "talk", "title": "我的朋友是智慧之神，但我的论文为什么还没写完", "organization": "净善宫青年学者心理建设工作坊", "period": "截稿日前夜", "description": { "en": "A seminar on the distinction between having access to wisdom and actually using it. Concludes with a 90-minute snack break.", "zh": "严格区分「认识有智慧的人」与「本人有智慧」两个概念。报告以 90 分钟茶歇结束，正文部分择日再讲。" }, "url": "" },
+    { "id": "peer-review", "type": "academic", "title": "Reviewer #2 / 二号审稿人", "organization": "Journal of Emergency Food Studies（拒绝承认刊名）", "period": "永久任职", "description": { "en": "Reviews every manuscript containing the phrase 'emergency food'. Standard decision: reject, and apologize to Paimon.", "zh": "审阅所有包含「应急食品」的稿件。标准意见：拒稿，并向派蒙道歉。利益冲突声明：我就是利益。" }, "url": "" },
+    { "id": "translation-service", "type": "academic", "title": "Traveler-to-Human Simultaneous Interpretation", "organization": "旅行者语言输出外包中心", "period": "全部主线及多数支线", "description": { "en": "Translates meaningful silence into fully voiced dialogue. Occasionally adds personal demands not present in the source material.", "zh": "将有意义的沉默翻译成全配音长段落。偶尔加入原文中不存在的个人伙食诉求，属于增译，不属于学术不端。" }, "url": "" },
+    { "id": "food-outreach", "type": "outreach", "title": "No Sweet Madame Left Behind / 不让一只甜甜花酿鸡掉队", "organization": "提瓦特粮食去库存公益联盟", "period": "每天三至六次", "description": { "en": "Personally removes surplus meals from the community. All volunteer hours are recorded as billable research time.", "zh": "亲自帮助社区消除多余饭菜。志愿时长全部折算为可报销科研工时。公益口号：浪费粮食可耻，给派蒙吃不可耻。" }, "url": "" }
+  ],
+  "news": [
+    { "id": "monographs-launch", "date": "2026-10", "kind": "Book", "title": { "en": "Three monographs released. None approved by the people in their titles.", "zh": "三部专著同时出版，当事人均表示「什么时候写的？」" }, "url": "", "displayTitle": "", "source": "", "image": "", "summary": { "en": "", "zh": "" } },
+    { "id": "allowance-revision", "date": "2026-09", "kind": "Research", "title": { "en": "Food allowance paper enters its 108th major revision. Budget increased again.", "zh": "伙食费论文进入第 108 轮大修；论文没变，经费又涨了。" }, "url": "", "displayTitle": "", "source": "", "image": "", "summary": { "en": "", "zh": "" } },
+    { "id": "defense-postponed", "date": "2026-08", "kind": "Update", "title": { "en": "Dissertation defense postponed: the candidate ate the experimental materials.", "zh": "博士答辩延期：候选人把实验材料吃了。" }, "url": "", "displayTitle": "", "source": "", "image": "", "summary": { "en": "", "zh": "" } },
+    { "id": "media-interview", "date": "2026-07", "kind": "Media", "displayTitle": "《蒸汽鸟报》专访：不愿透露体重的知名小型学者", "title": { "en": "A Small Scholar with a Very Large Research Appetite", "zh": "不愿透露体重的知名小型学者" }, "source": "蒸汽鸟报 · 美食与学术交叉版", "image": "/media/paimon-birthday.png", "url": "", "summary": { "en": "'Paimon is not small. The scope of Paimon's research is simply very concentrated.' The interview was interrupted by lunch seven times.", "zh": "「派蒙不是小，派蒙只是研究方向比较集中！」本次采访因吃饭中断七次。记者试图追问经费去向，被邀请共同销毁证据。" } }
+  ]
+}

@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import "../styles/template.css";
+import { profile } from "../data/content";
+import { site, sitePath } from "../lib/site";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  secureEditor?: boolean;
+}
+
+const {
+  title = `${profile.name} · ${profile.kicker.en}`,
+  description = profile.bio.en,
+  noindex = false,
+  secureEditor = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  alternateName: profile.nameZh,
+  url: new URL(sitePath("/"), Astro.site).href,
+  image: new URL(sitePath(site.portrait), Astro.site).href,
+  email: `mailto:${profile.email}`,
+  jobTitle: profile.role.en,
+  affiliation: profile.affiliations.map((item) => ({ "@type": "Organization", name: item.name })),
+  sameAs: [profile.links.scholar, profile.links.github, profile.links.orcid].filter(Boolean),
+  knowsAbout: profile.researchAreas.map((area) => area.title.en),
+};
+const socialImage = new URL(sitePath(site.socialImage), Astro.site).href;
+---
+
+<!doctype html>
+<html lang={site.defaultLanguage === "zh" ? "zh-CN" : "en"} data-language={site.defaultLanguage}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2efe8" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {secureEditor && (
+      <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self' https://api.github.com; img-src 'self' data: https://avatars.githubusercontent.com; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+      />
+    )}
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href={sitePath(site.favicon)} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+    {!noindex && !site.demo && <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema).replace(/</g, "\\u003c")}></script>}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    {!secureEditor && <script src="../scripts/site-ui.js"></script>}
+  </body>
+</html>

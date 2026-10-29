@@ -1,0 +1,39 @@
+---
+import sections from "../data/sections.json";
+import { profile } from "../data/content";
+import { sitePath } from "../lib/site";
+import LocalText from "./LocalText.astro";
+
+interface Props {
+  activeSlug?: string;
+}
+
+const { activeSlug = "" } = Astro.props;
+const visibleSections = [...sections].filter((section) => section.visible).sort((a, b) => a.order - b.order);
+---
+
+<header class="site-nav" data-site-nav>
+  <a class="site-brand" href={sitePath("/")} aria-label={`${profile.name}, home`}>
+    <span class="site-brand__mark">{profile.name.split(" ").map((part) => part[0]).join("")}</span>
+    <span class="site-brand__name">{profile.name} <span>{profile.nameZh}</span></span>
+  </a>
+
+  <nav class="site-nav__links" aria-label="Primary navigation">
+    {visibleSections.map((section) => (
+      <a href={sitePath(`/${section.slug}/`)} aria-current={activeSlug === section.slug ? "page" : undefined}>
+        <span class="lang lang--en">{section.nav.en}</span><span class="lang lang--zh">{section.nav.zh}</span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="site-nav__actions">
+    <button class="language-toggle" type="button" data-language-toggle aria-label="切换为中文" aria-pressed="false">
+      <span class="language-toggle__en">中</span>
+      <span class="language-toggle__zh">EN</span>
+    </button>
+    <a class="nav-update" href={sitePath("/update/")}>
+      <LocalText en="Update" zh="更新" />
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LocalText from "../components/LocalText.astro";
+import { sitePath } from "../lib/site";
+---
+<BaseLayout title="404 · Page not found" noindex>
+  <main id="main" class="update-page">
+    <p class="section-heading__index">404 / PAGE NOT FOUND</p>
+    <LocalText en="Page not found" zh="页面不存在" as="h1" />
+    <LocalText en="This page may have moved. Return home to continue exploring." zh="页面可能已迁移，请返回主页继续浏览。" as="p" />
+    <a class="button button--dark" href={sitePath("/")}><LocalText en="Return home" zh="返回主页" /></a>
+  </main>
+</BaseLayout>
